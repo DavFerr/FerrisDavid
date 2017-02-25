@@ -1,9 +1,5 @@
 package Fecha;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 public class Fecha {
 	private int dia;
 	private int mes;
@@ -23,7 +19,15 @@ public class Fecha {
 		if (anio < 0)
 			return false;
 
+		if (dia > diasMes())
+			return false;
+		else
+			return true;
+	}
+
+	private int diasMes() {
 		// determinamos la cantidad de días del mes:
+
 		int diasMes = 0;
 		switch (mes) {
 		case 1:
@@ -41,32 +45,21 @@ public class Fecha {
 		case 11:
 			diasMes = 30;
 			break;
-		case 2: // verificación de año bisiesto
-			if ((anio % 400 == 0) || ((anio % 4 == 0) && (anio % 100 != 0)))
+		case 2:
+			if (bisiesto())
 				diasMes = 29;
 			else
 				diasMes = 28;
 			break;
+
 		}
-		if (dia > diasMes)
-			return false;
-		else
-			return true;
+
+		return diasMes;
 	}
 
-	public static void main(String[] args)throws IOException {
-		int dia, mes, anyo;
-		System.out.println ("Introduce un día: ");
-		BufferedReader entrada = new BufferedReader(new InputStreamReader (System.in));
-		dia = Integer.parseInt(entrada.readLine());
-		System.out.println ("Introduce un mes: ");
-		mes = Integer.parseInt(entrada.readLine());
-		System.out.println ("Introduce un año: ");
-		anyo = Integer.parseInt(entrada.readLine());
-		Fecha f1=new Fecha(dia,mes,anyo);
-		if (f1.valida())
-			System.out.println("La fecha: "+dia+"/"+mes+"/"+anyo+" es válida");
-		else
-			System.out.println("La fecha: "+dia+"/"+mes+"/"+anyo+"NO es válida");
-		}
+	private boolean bisiesto() {
+		return (anio % 400 == 0) || ((anio % 4 == 0) && (anio % 100 != 0));
+	}
+
+
 }
