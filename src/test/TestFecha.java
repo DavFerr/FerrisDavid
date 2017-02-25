@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import Fecha.Fecha;
-
+/**
+ * Clase para usar la clase Fecha
+ * @author David
+ *
+ */
 public class TestFecha {
 	public static void main(String[] args)throws IOException {
 		int dia, mes, anyo;

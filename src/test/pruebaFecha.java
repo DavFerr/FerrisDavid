@@ -5,8 +5,14 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import Fecha.Fecha;
-
+/**
+ * Conjunto de pruebas validas y no validas
+ * @author David
+ * 
+ *
+ */
 public class pruebaFecha {
+
 	Fecha f1;
 	@Test
 	public void test() {

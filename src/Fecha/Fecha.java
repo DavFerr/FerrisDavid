@@ -1,16 +1,30 @@
 package Fecha;
-
+/**
+ * Clase para crear y verificar fechas
+ * 
+ * @author David Ferris
+ * 
+ *
+ */
 public class Fecha {
 	private int dia;
 	private int mes;
 	private int anio;
-
+/**
+ * Constructor de Fecha
+ * @param dia dia
+ * @param mes mes
+ * @param anio año
+ */
 	public Fecha(int dia, int mes, int anio) {
 		this.dia = dia;
 		this.mes = mes;
 		this.anio = anio;
 	}
-
+/**
+ * Metodo para comprobar si una fecha es válida o no
+ * @return True si la fecha es válida y False si no lo es.
+ */
 	public boolean valida() {
 		if (dia < 1 || dia > 31)
 			return false;
@@ -27,31 +41,19 @@ public class Fecha {
 
 	private int diasMes() {
 		// determinamos la cantidad de días del mes:
-
 		int diasMes = 0;
-		switch (mes) {
-		case 1:
-		case 3:
-		case 5:
-		case 7:
-		case 8:
-		case 10:
-		case 12:
+		if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12){
 			diasMes = 31;
-			break;
-		case 4:
-		case 6:
-		case 9:
-		case 11:
-			diasMes = 30;
-			break;
-		case 2:
-			if (bisiesto())
+		}
+		if (mes == 4 || mes == 6 || mes == 9 || mes == 11){
+			diasMes = 31;
+		}
+		if (mes==2){
+			if(bisiesto()){
 				diasMes = 29;
-			else
+			}else{
 				diasMes = 28;
-			break;
-
+			}
 		}
 
 		return diasMes;
